@@ -70,19 +70,20 @@ public class GestionPersonas {
             return;
         }
 
-        // Validar edad: solo numeros enteros
         System.out.print("Ingrese edad: ");
         int edad;
         try {
             edad = Integer.parseInt(scanner.nextLine().trim());
+            if (edad <= 0) {
+                System.out.println("Error: la edad debe ser un numero positivo.");
+                return;
+            }
         } catch (NumberFormatException e) {
             System.out.println("Error: debe ingresar solo numeros.");
             return;
         }
 
-        // Registrar segun el tipo seleccionado
         if (tipo == 1) {
-            // Validar carrera: no vacia y solo letras
             System.out.print("Ingrese carrera: ");
             String carrera = scanner.nextLine().trim();
             if (carrera.isEmpty()) {
@@ -96,7 +97,6 @@ public class GestionPersonas {
             listaPersonas.add(new Estudiante(cedula, nombre, edad, carrera));
 
         } else {
-            // Validar asignatura: no vacia y solo letras
             System.out.print("Ingrese asignatura: ");
             String asignatura = scanner.nextLine().trim();
             if (asignatura.isEmpty()) {
@@ -113,7 +113,6 @@ public class GestionPersonas {
         System.out.println("Registro agregado correctamente.");
     }
 
-    // ─── METODO: Mostrar todos los registros ─────────────────────────────────
     public void mostrarRegistros() {
         if (listaPersonas.isEmpty()) {
             System.out.println("\nNo hay registros almacenados.");
@@ -127,7 +126,6 @@ public class GestionPersonas {
             listaPersonas.get(i).mostrarDatos();
         }
 
-        // Plus: conteo por tipo
         int totalEstudiantes = 0;
         int totalDocentes = 0;
         for (Persona p : listaPersonas) {
@@ -142,7 +140,6 @@ public class GestionPersonas {
         System.out.println("==============================");
     }
 
-    // ─── METODO: Actualizar registro ─────────────────────────────────────────
     public void actualizarRegistro() {
         if (listaPersonas.isEmpty()) {
             System.out.println("\nNo hay registros para actualizar.");
@@ -167,7 +164,6 @@ public class GestionPersonas {
 
         Persona personaActual = listaPersonas.get(indice);
 
-        // Validar nuevo nombre
         System.out.print("Ingrese nuevo nombre completo: ");
         String nuevoNombre = scanner.nextLine().trim();
         if (nuevoNombre.isEmpty()) {
@@ -179,11 +175,14 @@ public class GestionPersonas {
             return;
         }
 
-        // Validar nueva edad
         System.out.print("Ingrese nueva edad: ");
         int nuevaEdad;
         try {
             nuevaEdad = Integer.parseInt(scanner.nextLine().trim());
+            if (nuevaEdad <= 0) {
+                System.out.println("Error: la edad debe ser un numero positivo.");
+                return;
+            }
         } catch (NumberFormatException e) {
             System.out.println("Error: debe ingresar solo numeros.");
             return;
@@ -223,7 +222,6 @@ public class GestionPersonas {
         System.out.println("Registro actualizado correctamente.");
     }
 
-    // ─── METODO: Eliminar registro ───────────────────────────────────────────
     public void eliminarRegistro() {
         if (listaPersonas.isEmpty()) {
             System.out.println("\nNo hay registros para eliminar.");
@@ -246,7 +244,6 @@ public class GestionPersonas {
             return;
         }
 
-        // Plus: confirmacion antes de eliminar
         System.out.print("¿Esta seguro que desea eliminar este registro? (s/n): ");
         String confirmacion = scanner.nextLine().trim();
         if (!confirmacion.equalsIgnoreCase("s")) {
@@ -258,12 +255,15 @@ public class GestionPersonas {
         System.out.println("Registro eliminado correctamente.");
     }
 
-    // ─── METODO: Buscar persona por cedula (Plus) ─────────────────────────────
     public void buscarPorCedula() {
         System.out.print("\nIngrese la cedula a buscar: ");
         String cedula = scanner.nextLine().trim();
         if (cedula.isEmpty()) {
             System.out.println("Campo obligatorio.");
+            return;
+        }
+        if (!soloDigitos(cedula)) {
+            System.out.println("Error: la cedula debe contener solo numeros.");
             return;
         }
 
@@ -282,7 +282,6 @@ public class GestionPersonas {
         }
     }
 
-    // ─── METODO: Menu interactivo ─────────────────────────────────────────────
     public void mostrarMenu() {
         int opcion = 0;
 
