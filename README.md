@@ -1,7 +1,7 @@
 # Sistema de Gestión de Personas - Java POO
-##Nombre: 
+## Nombre: 
 Jordy Cajas
-##Asignatura:
+## Asignatura:
 Programación Orientada a Objetos
 
 ## Descripción general
