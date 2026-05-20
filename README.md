@@ -1,8 +1,4 @@
 # Sistema de Gestión de Personas - Java POO
-## Nombre: 
-Jordy Cajas
-## Asignatura:
-Programación Orientada a Objetos
 
 ## Descripción general
 Sistema de consola desarrollado en Java que permite administrar registros de
@@ -173,5 +169,13 @@ con sus respectivas validaciones y confirma el registro si todo es correcto.
 ---
 
 ## Autor
+### Jordy Cajas
+
+---
+
 Práctica integradora de Programación Orientada a Objetos
-Asignatura: Programación Orientada a Objetos
+
+---
+
+## Asignatura: 
+Programación Orientada a Objetos
